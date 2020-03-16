@@ -40,7 +40,7 @@ func New() (*Repository, error) {
 
 }
 
-func (a *API) NewPatientProfile(dni, phone, email string, record *PatientRecord) (*PatientProfile, error) {
+func (api *API) NewPatientProfile(dni, phone, email string, record *PatientRecord) (*PatientProfile, error) {
 	id := xid.New().String()
 
 	profile := new(PatientProfile)
@@ -50,7 +50,7 @@ func (a *API) NewPatientProfile(dni, phone, email string, record *PatientRecord)
 	profile.Records = append(profile.Records, record)
 	profile.Phone = phone
 
-	_, err := a.repo.PatientProfile.InsertOne(context.Background(), profile)
+	_, err := api.repo.PatientProfile.InsertOne(context.Background(), profile)
 
 	if err != nil {
 		return nil, err
@@ -59,16 +59,16 @@ func (a *API) NewPatientProfile(dni, phone, email string, record *PatientRecord)
 
 }
 
-func (a *API) AddNewRecord(id string, record *PatientRecord) (*PatientProfile, error) {
+func (api *API) AddNewRecord(id string, record *PatientRecord) (*PatientProfile, error) {
 	profilePatient := new(PatientProfile)
 
-	if err := a.repo.PatientProfile.FindOne(context.Background(), bson.M{"id": id}).Decode(profilePatient); err != nil {
+	if err := api.repo.PatientProfile.FindOne(context.Background(), bson.M{"id": id}).Decode(profilePatient); err != nil {
 		return nil, err
 	}
 
 	profilePatient.Records = append(profilePatient.Records, *record)
 
-	_, err := a.repo.PatientProfile.UpdateOne(context.Background(), bson.M{"id": id}, profilePatient)
+	_, err := api.repo.PatientProfile.UpdateOne(context.Background(), bson.M{"id": id}, profilePatient)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func (a *API) AddNewRecord(id string, record *PatientRecord) (*PatientProfile, e
 	return profilePatient, nil
 }
 
-func (a *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRecord {
+func (api *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRecord {
 	newId := xid.New().String()
 	created := time.Now()
 	c := NewDiseasesWeight()

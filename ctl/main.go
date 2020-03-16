@@ -1,7 +1,11 @@
-package assistservice
+package main
 
 import (
+	"fmt"
+	"io/ioutil"
+
 	"github.com/caarlos0/env/v6"
+	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
 )
 
@@ -17,4 +21,25 @@ func extractConfigFromEnv() (*config, error) {
 		return nil, errors.Wrap(err, "environment variables failed at try to parsing")
 	}
 	return config, nil
+}
+
+func main() {
+	config, err := extractConfigFromEnv()
+	if err != nil {
+		panic(err)
+	}
+
+	engine := gin.New()
+	engine.POST("/typeform-webhook", func(c *gin.Context) {
+		data, err := ioutil.ReadAll(c.Request.Response.Body)
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Println(string(data))
+	})
+
+	if err := engine.Run(fmt.Sprintf(":%d", config.Port)); err != nil {
+		panic(err)
+	}
 }
