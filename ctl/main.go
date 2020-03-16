@@ -88,9 +88,18 @@ func main() {
 		)
 
 		log.WithField("score", score).Info("getting report from form")
-		if err := emitter.SendSMS(phone, name, 0.7); err != nil {
+
+		next, err := emitter.SendSMS(phone, name, score)
+		if err != nil {
 			panic(err)
 		}
+
+		go func() {
+			<- next.C
+			if err := emitter.SendRemember(phone, name); err != nil {
+				panic(err)
+			}
+		}()
 	})
 
 	if err := engine.Run(fmt.Sprintf(":%s", config.Port)); err != nil {
