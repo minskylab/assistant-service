@@ -44,7 +44,8 @@ func main() {
 			panic(err)
 		}
 
-		fmt.Println(string(data))
+		fmt.Printf("%+v\n", newAutoGen)
+		//fmt.Println(string(data))
 	})
 
 	if err := engine.Run(fmt.Sprintf(":%s", config.Port)); err != nil {
