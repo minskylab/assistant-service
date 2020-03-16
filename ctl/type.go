@@ -7,6 +7,11 @@ type Answers struct {
 	Choices     Choices `json:"choices,omitempty"`
 	Boolean     bool    `json:"boolean,omitempty"`
 }
+
+type WebHookRequest struct {
+	FormResponse FormResponse `json:"form_response"`
+}
+
 type FormResponse struct {
 	Answers []Answers `json:"answers"`
 }

@@ -38,13 +38,12 @@ func main() {
 			panic(err)
 		}
 
-		newAutoGen := new(FormResponse)
+		newAutoGen := new(WebHookRequest)
 
 		if err := json.Unmarshal(data, newAutoGen); err != nil {
 			panic(err)
 		}
 
-		fmt.Printf("%+v\n", newAutoGen)
 		fmt.Println(string(data))
 	})
 
