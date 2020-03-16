@@ -1,7 +1,4 @@
-FROM golang:1.12.5-alpine
-RUN apk add git
-
-ENV GO111MODULE=on
+FROM golang:1.14
 
 RUN mkdir /assistant
 WORKDIR /assistant
@@ -13,8 +10,6 @@ RUN go mod download
 
 COPY . .
 
-# RUN go get -d -u -v ./...
 RUN go install -v ./...
 
-
-CMD ["assistant"]
+CMD ["ctl"]

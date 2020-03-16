@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  assistance:
+    build: .
+    restart: always
+    environment:
+      PORT: 8080
+  portal:
+    image: steveltn/https-portal
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      DOMAINS: 'teleassistance.minsky.cc -> http://assistance:8080'
+      STAGE: 'production'

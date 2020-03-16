@@ -25,7 +25,6 @@ func newAPI(prefix string) *API {
 }
 
 func (api *API) registerEndpoints() {
-
 	r := api.e.Group(api.prefix)
 	api.registerAPI(r)
 
