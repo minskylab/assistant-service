@@ -1,29 +1,21 @@
 package assistservice
 
-func NewDiseasesWeight() *DiseasesWeight {
-	return &DiseasesWeight{
-		MusclePain:      0.1,
-		Breath:          0.1,
-		NasalCongestion: 0.1,
-		Headache:        0.1,
-		BoneAche:        0.1,
-		SoreThroat:      0.1,
-		Tiredness:       0.1,
-		DryCaught:       0.1,
-	}
-}
-
 func GetReport(payload DiseasesPayload, weight DiseasesWeight) float64 {
-	boneAche := payload.BoneAche * weight.BoneAche
-	breath := payload.Breath * weight.Breath
-	drycaught := payload.DryCaught * weight.DryCaught
-	headache := payload.Headache * weight.Headache
-	musclePain := payload.MusclePain * weight.MusclePain
-	nasal := payload.NasalCongestion * weight.NasalCongestion
-	soreThroat := payload.SoreThroat * weight.SoreThroat
-	tired := payload.Tiredness * weight.Tiredness
+	fiebre := payload.Fiebre * weight.Fiebre
+	congestionNasal := payload.CongestionNasal * weight.CongestionNasal
+	nauseas := payload.Nauseas * weight.Nauseas
+	vomitos := payload.Vomitos * weight.Vomitos
+	escalofrios := payload.Escalofrios * weight.Escalofrios
+	dolorDeCabeza := payload.DolorDeCabeza * weight.DolorDeCabeza
+	dolorMuscular := payload.DolorMuscular * weight.DolorMuscular
+	dolorDeHuesos := payload.DolorDeHuesos * weight.DolorDeHuesos
+	dolorDeGarganta := payload.DolorDeGarganta * weight.DolorDeGarganta
+	cansancio := payload.Cansancio * weight.Cansancio
+	tosSeca := payload.TosSeca * weight.TosSeca
+	tosProductiva := payload.TosProductiva * weight.TosProductiva
+	faltaDeAireAlRespirar := payload.FaltaDeAireAlRespirar * weight.FaltaDeAireAlRespirar
 
-	result := boneAche + breath + drycaught + headache + musclePain + nasal + soreThroat + tired
+	result := fiebre + congestionNasal + nauseas + vomitos + escalofrios + dolorDeCabeza + dolorMuscular + dolorDeHuesos + dolorDeGarganta + cansancio + tosSeca + tosProductiva + faltaDeAireAlRespirar
 
 	return result
 }

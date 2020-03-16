@@ -3,25 +3,35 @@ package assistservice
 import "time"
 
 type DiseasesPayload struct {
-	MusclePain      float64 `json:"muscle_pain"`
-	Breath          float64 `json:"breath"`
-	NasalCongestion float64 `json:"nasal_congestion"`
-	Headache        float64 `json:"head_ache"`
-	BoneAche        float64 `json:"bone_ache"`
-	SoreThroat      float64 `json:"sore_throat"`
-	Tiredness       float64 `json:"tiredness"`
-	DryCaught       float64 `json:"dry_cought"`
+	Fiebre float64 `json:"fiebre"`
+	CongestionNasal float64 `json:"congestion_nasal"`
+	Nauseas float64 `json:"nauseas"`
+	Vomitos float64 `json:"vomitos"`
+	Escalofrios float64 `json:"escalofrios"`
+	DolorDeCabeza float64 `json:"dolor_de_cabeza"`
+	DolorMuscular float64 `json:"dolor_muscular"`
+	DolorDeHuesos float64 `json:"dolor_de_huesos"`
+	DolorDeGarganta float64 `json:"dolor_de_garganta"`
+	Cansancio float64 `json:"cansancio"`
+	TosSeca float64 `json:"tos_seca"`
+	TosProductiva float64 `json:"tos_productiva"`
+	FaltaDeAireAlRespirar float64 `json:"falta_de_aire_al_respirar"`
 }
 
 type DiseasesWeight struct {
-	MusclePain      float64 `json:"muscle_pain"`
-	Breath          float64 `json:"breath"`
-	NasalCongestion float64 `json:"nasal_congestion"`
-	Headache        float64 `json:"head_ache"`
-	BoneAche        float64 `json:"bone_ache"`
-	SoreThroat      float64 `json:"sore_throat"`
-	Tiredness       float64 `json:"tiredness"`
-	DryCaught       float64 `json:"dry_cought"`
+	Fiebre float64 `json:"fiebre"`
+	CongestionNasal float64 `json:"congestion_nasal"`
+	Nauseas float64 `json:"nauseas"`
+	Vomitos float64 `json:"vomitos"`
+	Escalofrios float64 `json:"escalofrios"`
+	DolorDeCabeza float64 `json:"dolor_de_cabeza"`
+	DolorMuscular float64 `json:"dolor_muscular"`
+	DolorDeHuesos float64 `json:"dolor_de_huesos"`
+	DolorDeGarganta float64 `json:"dolor_de_garganta"`
+	Cansancio float64 `json:"cansancio"`
+	TosSeca float64 `json:"tos_seca"`
+	TosProductiva float64 `json:"tos_productiva"`
+	FaltaDeAireAlRespirar float64 `json:"falta_de_aire_al_respirar"`
 }
 
 type PatientRecord struct {

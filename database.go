@@ -78,7 +78,7 @@ func (api *API) AddNewRecord(id string, record *PatientRecord) (*PatientProfile,
 func (api *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRecord {
 	newId := xid.New().String()
 	created := time.Now()
-	c := NewDiseasesWeight()
+	// c := NewDiseasesWeight()
 	result := GetReport(payload, *c)
 
 	return &PatientRecord{
@@ -86,7 +86,7 @@ func (api *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRec
 		CreatedAt:        created,
 		PatientID:        id,
 		Input:            payload,
-		EvaluatedWeight:  *c,
+		// EvaluatedWeight:  *c,
 		EvaluationResult: result,
 	}
 
