@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 
@@ -39,8 +40,11 @@ func main() {
 
 		newAutoGen := new(FormResponse)
 
-		auto := c.BindJSON(newAutoGen)
-		fmt.Printf("%+v\n", auto)
+		if err := json.Unmarshal(data, newAutoGen); err != nil {
+			panic(err)
+		}
+
+		fmt.Printf("%+v\n", newAutoGen)
 		fmt.Println(string(data))
 	})
 
