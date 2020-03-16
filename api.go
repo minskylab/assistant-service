@@ -2,6 +2,7 @@ package assistservice
 
 import (
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -37,7 +38,17 @@ func (api *API) registerAPI(r *gin.RouterGroup) {
 	})
 
 	r.POST("/typeform-webhook", func(c *gin.Context) {
-		fmt.Println(c.Request.Body)
+		newAutoGen := new(WebHookRequest)
+		if err := c.BindJSON(newAutoGen); err != nil {
+			panic(err)
+		}
+
+		if len(newAutoGen.FormResponse.Answers) >= 1 {
+			for _,elements := range newAutoGen.FormResponse.Answers {
+				
+			}
+		}
+		fmt.Printf("%+v\n", newAutoGen)
+
 	})
 }
-
