@@ -79,7 +79,7 @@ func (api *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRec
 	newId := xid.New().String()
 	created := time.Now()
 	// c := NewDiseasesWeight()
-	result := GetReport(payload, *c)
+	result := GetReport(payload, DefaultWeights)
 
 	return &PatientRecord{
 		ID:               newId,
