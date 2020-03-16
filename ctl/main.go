@@ -30,8 +30,9 @@ func main() {
 	}
 
 	engine := gin.New()
+
 	engine.POST("/typeform-webhook", func(c *gin.Context) {
-		data, err := ioutil.ReadAll(c.Request.Response.Body)
+		data, err := ioutil.ReadAll(c.Request.Body)
 		if err != nil {
 			panic(err)
 		}
