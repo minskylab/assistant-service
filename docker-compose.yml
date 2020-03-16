@@ -9,6 +9,8 @@ services:
   portal:
     image: steveltn/https-portal
     restart: always
+    link:
+      - assistance
     ports:
       - '80:80'
       - '443:443'
