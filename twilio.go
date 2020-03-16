@@ -17,9 +17,9 @@ func NewEmitter(accountID, authToken string) (*Emitter, error) {
 	return &Emitter{twilio:twilio},nil
 }
 
-func (emitter *Emitter) SendRemember(to string, name string) error {
+func (emitter *Emitter) SendRemember(to string, dni string, name string) error {
 	from := "+16122840701"
-	message := fmt.Sprintf("Hola %s, te toca tu siguiente medición, entra a este link para realizar tu evaluación: https://bregymalpartida.typeform.com/to/w2V19L", name)
+	message := fmt.Sprintf("Hola %s, te toca tu siguiente medición, entra a este link para realizar tu evaluación: https://bregymalpartida.typeform.com/to/w2V19L?dni=%s", name,dni)
 
 	log.Infof("message to send: %s", message)
 

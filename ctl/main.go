@@ -66,7 +66,8 @@ func main() {
 		}
 
 		phone := answers[0].PhoneNumber
-		name := "Jhon"
+		dni := answers[1].Text
+		name := "{Nombre}"
 
 		score := assistservice.GetReport(
 			assistservice.DiseasesPayload{
@@ -96,7 +97,7 @@ func main() {
 
 		go func() {
 			<- next.C
-			if err := emitter.SendRemember(phone, name); err != nil {
+			if err := emitter.SendRemember(phone, name, dni); err != nil {
 				panic(err)
 			}
 		}()
