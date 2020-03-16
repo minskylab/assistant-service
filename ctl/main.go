@@ -37,10 +37,10 @@ func main() {
 			panic(err)
 		}
 
-		newAutoGen := new(*FormResponse)
+		newAutoGen := new(FormResponse)
 
 		auto := c.BindJSON(newAutoGen)
-		fmt.Printf("%+v", auto)
+		fmt.Printf("%+v\n", auto)
 		fmt.Println(string(data))
 	})
 
