@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 
 	"github.com/caarlos0/env/v6"
 	"github.com/gin-gonic/gin"
@@ -33,14 +31,8 @@ func main() {
 	engine := gin.New()
 
 	engine.POST("/typeform-webhook", func(c *gin.Context) {
-		data, err := ioutil.ReadAll(c.Request.Body)
-		if err != nil {
-			panic(err)
-		}
-
-		newAutoGen := new(WebHookRequest)
-
-		if err := json.Unmarshal(data, newAutoGen); err != nil {
+		newAutoGen := new(*WebHookRequest)
+		if err := c.BindJSON(newAutoGen); err != nil {
 			panic(err)
 		}
 
