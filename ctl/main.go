@@ -39,6 +39,7 @@ func main() {
 		fmt.Println(string(data))
 	})
 
+	fmt.Printf("%+v\n", config)
 	if err := engine.Run(fmt.Sprintf(":%s", config.Port)); err != nil {
 		panic(err)
 	}
