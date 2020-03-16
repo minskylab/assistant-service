@@ -47,7 +47,7 @@ func (api *API) NewPatientProfile(dni, phone, email string, record *PatientRecor
 	profile.DNI = dni
 	profile.Email = email
 	profile.ID = id
-	profile.Records = append(profile.Records, *record)
+	//profile.Records = append(profile.Records, *record)
 	profile.Phone = phone
 
 	_, err := api.repo.PatientProfile.InsertOne(context.Background(), profile)
