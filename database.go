@@ -47,7 +47,6 @@ func (api *API) NewPatientProfile(dni, phone, email string, record *PatientRecor
 	profile.DNI = dni
 	profile.Email = email
 	profile.ID = id
-	//profile.Records = append(profile.Records, *record)
 	profile.Phone = phone
 
 	_, err := api.repo.PatientProfile.InsertOne(context.Background(), profile)
@@ -80,7 +79,7 @@ func (api *API) NewPatientRecord(id string, payload DiseasesPayload) *PatientRec
 	newId := xid.New().String()
 	created := time.Now()
 	c := NewDiseasesWeight()
-	result := GetStatus(payload, *c)
+	result := GetReport(payload, *c)
 
 	return &PatientRecord{
 		ID:               newId,

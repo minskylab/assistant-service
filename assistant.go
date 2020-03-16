@@ -13,7 +13,7 @@ func NewDiseasesWeight() *DiseasesWeight {
 	}
 }
 
-func GetStatus(payload DiseasesPayload, weight DiseasesWeight) float64 {
+func GetReport(payload DiseasesPayload, weight DiseasesWeight) float64 {
 	boneAche := payload.BoneAche * weight.BoneAche
 	breath := payload.Breath * weight.Breath
 	drycaught := payload.DryCaught * weight.DryCaught

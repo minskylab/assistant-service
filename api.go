@@ -44,8 +44,8 @@ func (api *API) registerAPI(r *gin.RouterGroup) {
 		}
 
 		if len(newAutoGen.FormResponse.Answers) >= 1 {
-			for _,elements := range newAutoGen.FormResponse.Answers {
-				
+			for _, element := range newAutoGen.FormResponse.Answers {
+				fmt.Println(element.Text)
 			}
 		}
 		fmt.Printf("%+v\n", newAutoGen)
